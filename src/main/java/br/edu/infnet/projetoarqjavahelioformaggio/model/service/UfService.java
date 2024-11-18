@@ -22,5 +22,9 @@ public class UfService extends AbstractService<Uf> {
         return this.ufRepository.findBySigla(sigla);
     }
 
+    public Uf findByNome(String nome) throws EntityNotFoundException {
+        return this.ufRepository.findByNome(nome);
+    }
+
 
 }

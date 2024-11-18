@@ -18,4 +18,7 @@ public class CidadeService extends AbstractService<Cidade> {
         this.cidadeRepository = cidadeRepository;
     }
 
+    public Cidade findByNome(String nome) throws EntityNotFoundException {
+        return this.cidadeRepository.findByNome(nome);
+    }
 }

@@ -4,7 +4,9 @@ import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.Cidade;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.Uf;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "vereador")
 public class Vereador extends Candidato{

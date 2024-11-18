@@ -10,4 +10,5 @@ import java.util.UUID;
 public interface UfRepository extends CrudRepository<Uf, UUID> {
 
     Uf findBySigla(String sigla);
+    Uf findByNome(String nome);
 }

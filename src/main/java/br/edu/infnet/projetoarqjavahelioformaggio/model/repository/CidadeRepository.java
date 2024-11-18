@@ -8,4 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface CidadeRepository extends CrudRepository<Cidade, UUID> {
+
+    Cidade findByNome(String nome);
 }

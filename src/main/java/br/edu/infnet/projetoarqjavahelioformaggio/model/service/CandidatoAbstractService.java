@@ -32,6 +32,10 @@ public abstract class CandidatoAbstractService<T extends Candidato> {
         return (T) getRepository().save(candidato);
     };
 
+    public Iterable<T> save(Iterable<T> candidato){
+        return (Iterable<T>) getRepository().saveAll(candidato);
+    };
+
     public void delete(T candidato){
         getRepository().delete(candidato);
     };
