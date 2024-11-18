@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 @Qualifier("Governador")
-public class GovernadorServiceImpl implements CandidatoService<Governador>{
+public class GovernadorServiceImpl extends CandidatoAbstractService<Governador> {
 
     private final GovernadorRepository governadorRepository;
 
@@ -20,37 +20,7 @@ public class GovernadorServiceImpl implements CandidatoService<Governador>{
     }
 
     @Override
-    public Optional<Governador> findById(UUID id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Governador findByCode(String code) {
-        return null;
-    }
-
-    @Override
-    public List<Governador> findByPartido(String codigoPartido) {
-        return List.of();
-    }
-
-    @Override
-    public List<Governador> findAll() {
-        return List.of();
-    }
-
-    @Override
-    public Governador save(Governador candidato) {
-        return null;
-    }
-
-    @Override
-    public void delete(Governador candidato) {
-
-    }
-
-    @Override
-    public void deleteById(UUID id) {
-
+    public GovernadorRepository getRepository() {
+        return governadorRepository;
     }
 }

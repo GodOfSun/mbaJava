@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 @Qualifier("Vereador")
-public class VereadorServiceImpl implements CandidatoService<Vereador>{
+public class VereadorServiceImpl extends CandidatoAbstractService<Vereador> {
 
     private final VereadorRepository vereadorRepository;
 
@@ -20,37 +20,7 @@ public class VereadorServiceImpl implements CandidatoService<Vereador>{
     }
 
     @Override
-    public Optional<Vereador> findById(UUID id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Vereador findByCode(String code) {
-        return null;
-    }
-
-    @Override
-    public List<Vereador> findByPartido(String codigoPartido) {
-        return List.of();
-    }
-
-    @Override
-    public List<Vereador> findAll() {
-        return List.of();
-    }
-
-    @Override
-    public Vereador save(Vereador candidato) {
-        return null;
-    }
-
-    @Override
-    public void delete(Vereador candidato) {
-
-    }
-
-    @Override
-    public void deleteById(UUID id) {
-
+    public VereadorRepository getRepository() {
+        return vereadorRepository;
     }
 }

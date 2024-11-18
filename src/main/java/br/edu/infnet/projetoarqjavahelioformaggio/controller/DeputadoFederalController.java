@@ -1,7 +1,7 @@
 package br.edu.infnet.projetoarqjavahelioformaggio.controller;
 
 import br.edu.infnet.projetoarqjavahelioformaggio.model.domain.DeputadoFederal;
-import br.edu.infnet.projetoarqjavahelioformaggio.model.service.CandidatoService;
+import br.edu.infnet.projetoarqjavahelioformaggio.model.service.CandidatoAbstractService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeputadoFederalController extends AbstractCandidatoController<DeputadoFederal> {
 
     @Qualifier("DeputadoFederal")
-    private final CandidatoService<DeputadoFederal> candidatoService;
+    private final CandidatoAbstractService<DeputadoFederal> candidatoService;
 
-    public DeputadoFederalController(CandidatoService<DeputadoFederal> candidatoService) {
+    public DeputadoFederalController(CandidatoAbstractService<DeputadoFederal> candidatoService) {
         this.candidatoService = candidatoService;
     }
 
     @Override
-    protected CandidatoService<DeputadoFederal> getCandidatoService() {
+    protected CandidatoAbstractService<DeputadoFederal> getCandidatoService() {
         return candidatoService;
     }
 }

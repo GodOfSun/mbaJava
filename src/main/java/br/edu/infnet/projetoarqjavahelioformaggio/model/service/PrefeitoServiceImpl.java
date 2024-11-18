@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Service
 @Qualifier("Prefeito")
-public class PrefeitoServiceImpl implements CandidatoService<Prefeito>{
+public class PrefeitoServiceImpl extends CandidatoAbstractService<Prefeito> {
 
     private final PrefeitoRepository prefeitoRepository;
 
@@ -20,37 +20,7 @@ public class PrefeitoServiceImpl implements CandidatoService<Prefeito>{
     }
 
     @Override
-    public Optional<Prefeito> findById(UUID id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Prefeito findByCode(String code) {
-        return null;
-    }
-
-    @Override
-    public List<Prefeito> findByPartido(String codigoPartido) {
-        return List.of();
-    }
-
-    @Override
-    public List<Prefeito> findAll() {
-        return List.of();
-    }
-
-    @Override
-    public Prefeito save(Prefeito candidato) {
-        return null;
-    }
-
-    @Override
-    public void delete(Prefeito candidato) {
-
-    }
-
-    @Override
-    public void deleteById(UUID id) {
-
+    public PrefeitoRepository getRepository() {
+        return prefeitoRepository;
     }
 }
