@@ -12,6 +12,8 @@ import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.CidadeDTO;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.Uf;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.UfDTO;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,8 @@ import java.util.List;
 
 @Component
 public class Loader implements ApplicationRunner {
+
+    private static final Logger logger = LoggerFactory.getLogger(Loader.class);
 
     private final ExternalClientService externalClientService;
     private final UfService ufService;
@@ -76,7 +80,7 @@ public class Loader implements ApplicationRunner {
                 vereadores.add(vereador);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Erro ao carregar vereadores do CSV: " + filePath, e);
         }
         return vereadores;
     }
@@ -106,7 +110,7 @@ public class Loader implements ApplicationRunner {
                 prefeitos.add(prefeito);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Erro ao carregar prefeitos do CSV: " + filePath, e);
         }
         return prefeitos;
     }
@@ -132,7 +136,7 @@ public class Loader implements ApplicationRunner {
                 deputadosEstaduais.add(deputadoEstadual);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Erro ao carregar deputados estaduais do CSV: " + filePath, e);
         }
         return deputadosEstaduais;
     }
@@ -157,7 +161,7 @@ public class Loader implements ApplicationRunner {
                 deputadosFederais.add(deputadoFederal);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Erro ao deputados federais do CSV: " + filePath, e);
         }
 
         return deputadosFederais;
@@ -184,7 +188,7 @@ public class Loader implements ApplicationRunner {
                 governadores.add(governador);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Erro ao carregar governadores do CSV: " + filePath, e);
         }
         return governadores;
     }
@@ -209,7 +213,7 @@ public class Loader implements ApplicationRunner {
                 presidentes.add(presidente);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Erro ao carregar presidentes do CSV: " + filePath, e);
         }
 
         return presidentes;
@@ -238,30 +242,34 @@ public class Loader implements ApplicationRunner {
             }
             this.cidadeService.create(cidadesEntity);
         }
-        
-        //vereadores
-        List<Vereador> vereadores = loadVereadoresFromCSV("files/veread.csv");
-        this.vereadorService.save(vereadores);
 
-        // Prefeitos
-        List<Prefeito> prefeitos = loadPrefeitosFromCSV("files/pref.csv");
-        this.prefeitoService.save(prefeitos);
+        try {
+            //vereadores
+            List<Vereador> vereadores = loadVereadoresFromCSV("files/veread.csv");
+            this.vereadorService.save(vereadores);
 
-        //deputados estaduais
-        List<DeputadoEstadual> deputadosEstaduais = loadDeputadosEstaduaisFromCSV("files/depEst.csv");
-        this.deputadoEstadualService.save(deputadosEstaduais);
+            // Prefeitos
+            List<Prefeito> prefeitos = loadPrefeitosFromCSV("files/pref.csv");
+            this.prefeitoService.save(prefeitos);
 
-        //deputados federais
-        List<DeputadoFederal> deputadosFederais = loadDeputadosFederaisFromCSV("files/depFed.csv");
-        this.deputadoFederalService.save(deputadosFederais);
+            //deputados estaduais
+            List<DeputadoEstadual> deputadosEstaduais = loadDeputadosEstaduaisFromCSV("files/depEst.csv");
+            this.deputadoEstadualService.save(deputadosEstaduais);
 
-        //governadores
-        List<Governador> governadores = loadGovernadoresFromCSV("files/gov.csv");
-        this.governadorService.save(governadores);
+            //deputados federais
+            List<DeputadoFederal> deputadosFederais = loadDeputadosFederaisFromCSV("files/depFed.csv");
+            this.deputadoFederalService.save(deputadosFederais);
 
-        //presidentes
-        List<Presidente> presidentes = loadPresidentesFromCSV("files/presid.csv");
-        this.presidenteService.save(presidentes);
+            //governadores
+            List<Governador> governadores = loadGovernadoresFromCSV("files/gov.csv");
+            this.governadorService.save(governadores);
+
+            //presidentes
+            List<Presidente> presidentes = loadPresidentesFromCSV("files/presid.csv");
+            this.presidenteService.save(presidentes);
+        } catch (Exception e) {
+            logger.error("Erro durante a inicialização do Loader", e);
+        }
 
     }
 }

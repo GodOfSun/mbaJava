@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface PresidenteRepository extends CandidatoRepository<Presidente, UUID> {
+public interface PresidenteRepository extends BaseCrudRepository<Presidente, UUID> {
 }

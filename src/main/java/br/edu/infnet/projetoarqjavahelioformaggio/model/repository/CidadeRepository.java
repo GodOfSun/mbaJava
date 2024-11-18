@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface CidadeRepository extends CrudRepository<Cidade, UUID> {
+public interface CidadeRepository extends BaseCrudRepository<Cidade, UUID> {
 
-    Optional<Cidade> findByNome(String nome);
+    Optional<Cidade> findByNomeOrderByNome(String nome);
 }

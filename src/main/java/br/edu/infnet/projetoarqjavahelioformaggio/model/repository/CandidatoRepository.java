@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public interface CandidatoRepository<ENTITY,ID> extends CrudRepository<ENTITY,ID> {
+public interface CandidatoRepository<ENTITY,ID> extends BaseCrudRepository<ENTITY,ID> {
 
     @Query("SELECT e FROM #{#entityName} e WHERE e.codigo = :code")
     Optional<ENTITY> findByCode(@Param("code") String code);

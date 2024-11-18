@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface EleitorRepository extends CrudRepository<Eleitor, UUID> {
+public interface EleitorRepository extends BaseCrudRepository<Eleitor, UUID> {
 }

@@ -8,8 +8,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UfRepository extends CrudRepository<Uf, UUID> {
+public interface UfRepository extends BaseCrudRepository<Uf, UUID> {
 
-    Optional<Uf> findBySigla(String sigla);
-    Optional<Uf> findByNome(String nome);
+    Optional<Uf> findBySiglaOrderByNome(String sigla);
+    Optional<Uf> findByNomeOrderByNome(String nome);
 }

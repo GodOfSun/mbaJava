@@ -18,16 +18,16 @@ public class UfService extends AbstractService<Uf> {
     }
 
     public Optional<Uf> findBySigla(String sigla) throws EntityNotFoundException {
-        return this.ufRepository.findBySigla(sigla);
+        return this.ufRepository.findBySiglaOrderByNome(sigla);
     }
 
     public Optional<Uf> findByNome(String nome) throws EntityNotFoundException {
-        return this.ufRepository.findByNome(nome);
+        return this.ufRepository.findByNomeOrderByNome(nome);
     }
 
     @Override
     public Uf create(Uf entity) {
-        Optional<Uf> found = this.ufRepository.findBySigla(entity.getSigla());
+        Optional<Uf> found = this.ufRepository.findBySiglaOrderByNome(entity.getSigla());
         return found.orElseGet(() -> super.create(entity));
     }
 }

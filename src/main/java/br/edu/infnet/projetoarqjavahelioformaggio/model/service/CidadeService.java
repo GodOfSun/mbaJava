@@ -20,12 +20,12 @@ public class CidadeService extends AbstractService<Cidade> {
     }
 
     public Optional<Cidade> findByNome(String nome) throws EntityNotFoundException {
-        return this.cidadeRepository.findByNome(nome);
+        return this.cidadeRepository.findByNomeOrderByNome(nome);
     }
 
     @Override
     public Cidade create(Cidade entity) {
-        Optional<Cidade> found = this.cidadeRepository.findByNome(entity.getNome());
+        Optional<Cidade> found = this.cidadeRepository.findByNomeOrderByNome(entity.getNome());
         return found.orElseGet(() -> super.create(entity));
     }
 }

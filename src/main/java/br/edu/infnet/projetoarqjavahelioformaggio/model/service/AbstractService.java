@@ -1,9 +1,11 @@
 package br.edu.infnet.projetoarqjavahelioformaggio.model.service;
 
 import br.edu.infnet.projetoarqjavahelioformaggio.core.BaseEntity;
+import br.edu.infnet.projetoarqjavahelioformaggio.model.repository.BaseCrudRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
@@ -13,9 +15,9 @@ public abstract class AbstractService<T extends BaseEntity> {
 
 
     private static final Logger logger = LoggerFactory.getLogger(AbstractService.class);
-    private final CrudRepository<T, UUID> repository;
+    private final BaseCrudRepository<T, UUID> repository;
 
-    public AbstractService(CrudRepository<T, UUID> repository) {
+    public AbstractService(BaseCrudRepository<T, UUID> repository) {
         this.repository = repository;
     }
 
@@ -39,6 +41,10 @@ public abstract class AbstractService<T extends BaseEntity> {
 
     public Iterable<T> getAll() {
         return repository.findAll();
+    }
+
+    public Iterable<T> getAllSorted(Sort sort) {
+        return repository.findAll(sort);
     }
 
     public T update(UUID id, T entity) {
