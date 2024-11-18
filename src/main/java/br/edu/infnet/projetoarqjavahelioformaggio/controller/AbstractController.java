@@ -3,6 +3,7 @@ package br.edu.infnet.projetoarqjavahelioformaggio.controller;
 import br.edu.infnet.projetoarqjavahelioformaggio.core.BaseEntity;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.service.AbstractService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,14 +36,14 @@ public abstract class AbstractController<T extends BaseEntity> {
 
     @Operation(summary = "Inclui um elemento")
     @PostMapping
-    public ResponseEntity<T> create(@RequestBody T entidade) {
+    public ResponseEntity<T> create(@Valid  @RequestBody T entidade) {
         T savedentidade = (T) getService().create(entidade);
         return ResponseEntity.ok(savedentidade);
     }
 
     @Operation(summary = "Edita um elemento por ID e dados")
     @PutMapping("/{id}")
-    public ResponseEntity<T> update(@PathVariable UUID id, @RequestBody T entidade) {
+    public ResponseEntity<T> update(@Valid @PathVariable UUID id, @RequestBody T entidade) {
         if (getService().getById(id).isEmpty()) {
             return ResponseEntity.notFound().build();
         }

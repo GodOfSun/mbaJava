@@ -12,12 +12,12 @@ import lombok.Data;
 public class Prefeito extends Candidato{
     private String codigoPrefeito;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_uf", nullable = false)
     @NotNull(message = "O Estado é obrigatório")
     private Uf uf;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_cidade", nullable = false)
     @NotNull(message = "A cidade é obrigatória")
     private Cidade cidade;

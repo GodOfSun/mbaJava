@@ -13,7 +13,7 @@ public class DeputadoEstadual extends Candidato{
 
     private String codigoEstadual;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_uf", nullable = false)
     @NotNull(message = "O Estado é obrigatório")
     private Uf uf;

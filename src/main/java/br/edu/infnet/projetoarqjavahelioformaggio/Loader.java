@@ -11,7 +11,6 @@ import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.Cidade;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.CidadeDTO;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.Uf;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.UfDTO;
-import br.edu.infnet.projetoarqjavahelioformaggio.model.repository.UfRepository;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.service.*;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -228,7 +227,7 @@ public class Loader implements ApplicationRunner {
         this.ufService.create(estadosEntity);
 
         for(UfDTO estado : estados) {
-            Optional<Uf> estadoEntity = this.ufService.findBySilga(estado.getSigla());
+            Optional<Uf> estadoEntity = this.ufService.findBySigla(estado.getSigla());
             Collection<CidadeDTO> cidades = this.externalClientService.obterMunicipios(estado.getId());
 
             Collection<Cidade> cidadesEntity = new ArrayList<>();

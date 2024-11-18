@@ -21,4 +21,5 @@ public class PresidenteController extends AbstractCandidatoController<Presidente
     protected CandidatoAbstractService<Presidente> getCandidatoService() {
         return candidatoService;
     }
+
 }

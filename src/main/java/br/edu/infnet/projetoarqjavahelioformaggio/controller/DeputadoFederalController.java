@@ -21,4 +21,5 @@ public class DeputadoFederalController extends AbstractCandidatoController<Deput
     protected CandidatoAbstractService<DeputadoFederal> getCandidatoService() {
         return candidatoService;
     }
+
 }

@@ -13,12 +13,12 @@ public class Vereador extends Candidato{
 
     private String codigoVereador;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_uf", nullable = false)
     @NotNull(message = "O Estado é obrigatório")
     private Uf uf;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_cidade", nullable = false)
     @NotNull(message = "A cidade é obrigatória")
     private Cidade cidade;

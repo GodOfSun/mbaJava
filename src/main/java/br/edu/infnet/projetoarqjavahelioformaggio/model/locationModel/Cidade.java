@@ -16,7 +16,7 @@ public class Cidade extends BaseEntity {
     @Size(min = 2, max = 100, message = "O nome da cidade deve ter entre 2 e 100 caracteres")
     private String nome;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_estado", nullable = false)
     @NotNull(message = "O estado é obrigatório")
     private Uf estado;

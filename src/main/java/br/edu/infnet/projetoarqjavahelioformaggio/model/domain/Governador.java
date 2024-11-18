@@ -11,7 +11,7 @@ import lombok.Data;
 public class Governador extends Candidato{
     private String codigoGovernador;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_uf", nullable = false)
     @NotNull(message = "O Estado é obrigatório")
     private Uf uf;

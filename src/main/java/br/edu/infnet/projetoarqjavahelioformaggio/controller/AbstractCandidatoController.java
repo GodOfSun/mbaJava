@@ -4,6 +4,7 @@ import br.edu.infnet.projetoarqjavahelioformaggio.exceptions.CandidatoNaoEncontr
 import br.edu.infnet.projetoarqjavahelioformaggio.model.domain.Candidato;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.service.CandidatoAbstractService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,14 +55,14 @@ public abstract class AbstractCandidatoController<T extends Candidato> {
 
     @PostMapping
     @Operation(summary = "Inclui um candidato")
-    public ResponseEntity<T> create(@RequestBody T candidato) {
+    public ResponseEntity<T> create(@Valid @RequestBody T candidato) {
         T savedCandidato = (T) getCandidatoService().save(candidato);
         return ResponseEntity.ok(savedCandidato);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Edita um candidato pelo ID e dados")
-    public ResponseEntity<T> update(@PathVariable UUID id, @RequestBody T candidato) {
+    public ResponseEntity<T> update(@Valid @PathVariable UUID id, @RequestBody T candidato) {
         if (getCandidatoService().findById(id).isEmpty()) {
             return ResponseEntity.notFound().build();
         }

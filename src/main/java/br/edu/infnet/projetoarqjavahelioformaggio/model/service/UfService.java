@@ -3,11 +3,9 @@ package br.edu.infnet.projetoarqjavahelioformaggio.model.service;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.locationModel.Uf;
 import br.edu.infnet.projetoarqjavahelioformaggio.model.repository.UfRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UfService extends AbstractService<Uf> {
@@ -19,7 +17,7 @@ public class UfService extends AbstractService<Uf> {
         this.ufRepository = ufRepository;
     }
 
-    public Optional<Uf> findBySilga(String sigla) throws EntityNotFoundException {
+    public Optional<Uf> findBySigla(String sigla) throws EntityNotFoundException {
         return this.ufRepository.findBySigla(sigla);
     }
 

@@ -29,12 +29,12 @@ public class Eleitor extends BaseEntity {
     @Pattern(regexp = "\\d{4}\\s\\d{4}\\s\\d{4}", message = "O título eleitoral deve seguir o padrão 0000 0000 0000")
     private String tituloEleitoral;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_uf", nullable = false)
     @NotNull(message = "A UF é obrigatória")
     private Uf uf;
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne
     @JoinColumn(name = "id_cidade", nullable = false)
     @NotNull(message = "A cidade é obrigatória")
     private Cidade cidade;
