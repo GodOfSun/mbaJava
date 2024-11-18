@@ -65,10 +65,10 @@ public class Loader implements ApplicationRunner {
                 vereador.setNumeroPartido(Integer.parseInt(values[2]));
                 vereador.setCodigo(values[3]);
 
-                Cidade cidade = cidadeService.findByNome(values[5]);
+                Cidade cidade = cidadeService.findByNome(values[5]).orElseThrow();
                 vereador.setCidade(cidade);
 
-                Uf uf = ufService.findByNome(values[5]);
+                Uf uf = ufService.findByNome(values[5]).orElseThrow();
                 vereador.setUf(uf);
 
                 vereador.setNome(values[6]);
@@ -95,10 +95,10 @@ public class Loader implements ApplicationRunner {
                 prefeito.setNumeroPartido(Integer.parseInt(values[2]));
                 prefeito.setCodigo(values[3]);
 
-                Cidade cidade = cidadeService.findByNome(values[4]);
+                Cidade cidade = cidadeService.findByNome(values[4]).orElseThrow();
                 prefeito.setCidade(cidade);
 
-                Uf uf = ufService.findByNome(values[5]);
+                Uf uf = ufService.findByNome(values[5]).orElseThrow();
                 prefeito.setUf(uf);
 
                 prefeito.setNome(values[6]);
@@ -125,7 +125,7 @@ public class Loader implements ApplicationRunner {
                 deputadoEstadual.setGastoCampanha(Float.parseFloat(data[1]));
                 deputadoEstadual.setNumeroPartido(Integer.parseInt(data[2]));
                 deputadoEstadual.setCodigo(data[3]);
-                deputadoEstadual.setUf(ufService.findByNome(data[4]));
+                deputadoEstadual.setUf(ufService.findByNome(data[4]).orElseThrow());
                 deputadoEstadual.setNome(data[5]);
                 deputadoEstadual.setCodigoEstadual(data[6]);
                 deputadoEstadual.setEmail(data[7]);
@@ -177,7 +177,7 @@ public class Loader implements ApplicationRunner {
                 governador.setGastoCampanha(Float.parseFloat(data[1]));
                 governador.setNumeroPartido(Integer.parseInt(data[2]));
                 governador.setCodigo(data[3]);
-                governador.setUf(ufService.findByNome(data[4]));
+                governador.setUf(ufService.findByNome(data[4]).orElseThrow());
                 governador.setNome(data[5]);
                 governador.setCodigoGovernador(data[6]);
                 governador.setEmail(data[7]);
@@ -228,13 +228,13 @@ public class Loader implements ApplicationRunner {
         this.ufService.create(estadosEntity);
 
         for(UfDTO estado : estados) {
-            Uf estadoEntity = this.ufService.findBySilga(estado.getSigla());
+            Optional<Uf> estadoEntity = this.ufService.findBySilga(estado.getSigla());
             Collection<CidadeDTO> cidades = this.externalClientService.obterMunicipios(estado.getId());
 
             Collection<Cidade> cidadesEntity = new ArrayList<>();
             for(CidadeDTO cidadeDTO : cidades) {
                 Cidade cidadeEntity = new Cidade(cidadeDTO);
-                cidadeEntity.setEstado(estadoEntity);
+                cidadeEntity.setEstado(estadoEntity.orElseThrow());
                 cidadesEntity.add(cidadeEntity);
             }
             this.cidadeService.create(cidadesEntity);
