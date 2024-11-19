@@ -1,7 +1,6 @@
 package br.edu.infnet.projetoarqjavahelioformaggio.model.repository;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.query.Param;
 

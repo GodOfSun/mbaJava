@@ -17,11 +17,8 @@ public class DeputadoEstadualSeviceImpl extends CandidatoAbstractService<Deputad
     private final DeputadoEstadualRepository deputadoEstadualRepository;
 
     public DeputadoEstadualSeviceImpl(DeputadoEstadualRepository deputadoEstadualRepository) {
+        super(deputadoEstadualRepository);
         this.deputadoEstadualRepository = deputadoEstadualRepository;
     }
 
-    @Override
-    public DeputadoEstadualRepository getRepository() {
-        return deputadoEstadualRepository;
-    }
 }

@@ -16,11 +16,9 @@ public class DeputadoFederalSeviceImpl extends CandidatoAbstractService<Deputado
     private final DeputadoFederalRepository deputadoFederalRepository;
 
     public DeputadoFederalSeviceImpl(DeputadoFederalRepository deputadoFederalRepository) {
+        super(deputadoFederalRepository);
         this.deputadoFederalRepository = deputadoFederalRepository;
     }
 
-    @Override
-    public DeputadoFederalRepository getRepository() {
-        return deputadoFederalRepository;
-    }
+
 }

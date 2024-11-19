@@ -17,11 +17,8 @@ public class PresidenteServiceImpl extends CandidatoAbstractService<Presidente> 
     private final PresidenteRepository presidenteRepository;
 
     public PresidenteServiceImpl(PresidenteRepository presidenteRepository) {
+        super(presidenteRepository);
         this.presidenteRepository = presidenteRepository;
     }
 
-    @Override
-    public CandidatoRepository getRepository() {
-        return presidenteRepository;
-    }
 }

@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "d97deb5a-cb37-4a51-bad9-08e2271c0532",
+		"name": "MBAHelioFormaggioJuniotArqJava",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1600227"
+	},
+	"item": [
+		{
+			"name": "GenericCandidatoRequests",
+			"item": [
+				{
+					"name": "GenericGetList",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GenericGet",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GenericGetByCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/{{entidade}}/code/{{code}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"{{entidade}}",
+								"code",
+								"{{code}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GenericGetByPartido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/{{entidade}}/code/{{code}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"{{entidade}}",
+								"code",
+								"{{code}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveEntidade",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/{{entidade}}/{{uuid}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"{{entidade}}",
+								"{{uuid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DepEst",
+			"item": [
+				{
+					"name": "PostDepEstadual",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Nome do Deputado\",\r\n  \"numeroPartido\": 123,\r\n  \"ativo\": true,\r\n  \"codigo\": \"código_exemplo\",\r\n  \"codigoEstadual\": \"codigo_estadual_exemplo\",\r\n  \"email\": \"email@email.com\",\r\n  \"gastoCampanha\": 1234.00,\r\n  \"uf\": {\r\n    \"nome\": \"Paraná\",\r\n    \"sigla\": \"PR\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/deputado-estadual",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"deputado-estadual"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutDepEstadual",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"466cca9e-8350-44bf-8ee3-f09972a5cf55\",\r\n    \"nome\": \"Nome do Deputado\",\r\n    \"email\": \"email@email.com\",\r\n    \"numeroPartido\": 123,\r\n    \"ativo\": true,\r\n    \"gastoCampanha\": 1234.0,\r\n    \"codigo\": \"código_exemplo\",\r\n    \"codigoEstadual\": \"codigo_estadual_exemplo\",\r\n    \"uf\": {\r\n        \"id\": \"c7588c3a-f9e0-4b7b-b0e2-13714d80c2a0\",\r\n        \"nome\": \"Paraná\",\r\n        \"sigla\": \"PR\",\r\n        \"code\": 41\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/deputado-estadual/466cca9e-8350-44bf-8ee3-f09972a5cf55",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"deputado-estadual",
+								"466cca9e-8350-44bf-8ee3-f09972a5cf55"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eleitor",
+			"item": [
+				{
+					"name": "GetListaEleitor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/eleitor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"eleitor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEleitor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/eleitor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"eleitor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InsereEleitor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Nome do Eleitor\",\r\n  \"cpf\": \"000.000.000-00\",\r\n  \"tituloEleitoral\": \"0000 0000 0000\",\r\n  \"uf\": {\r\n    \"nome\": \"Paraná\",\r\n    \"sigla\": \"PR\"\r\n  },\r\n  \"cidade\": {\r\n    \"nome\": \"Curitiba\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/eleitor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"eleitor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edita Eleitor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"0a11da60-a21e-4d49-8f95-104b2713c986\",\r\n    \"nome\": \"Nome do Eleitor\",\r\n    \"cpf\": \"000.000.000-00\",\r\n    \"tituloEleitoral\": \"0000 0000 0000\",\r\n    \"uf\": {\r\n        \"id\": \"94c7edf8-c903-44f6-99dc-d365130c7bb0\",\r\n        \"nome\": \"Paraná\",\r\n        \"sigla\": \"PR\",\r\n        \"code\": 41\r\n    },\r\n    \"cidade\": {\r\n        \"id\": \"40c330d2-7e3b-4879-a6af-3324e2769c14\",\r\n        \"nome\": \"Curitiba\",\r\n        \"estado\": {\r\n            \"id\": \"94c7edf8-c903-44f6-99dc-d365130c7bb0\",\r\n            \"nome\": \"Paraná\",\r\n            \"sigla\": \"PR\",\r\n            \"code\": 41\r\n        },\r\n        \"code\": 4106902\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/eleitor/0a11da60-a21e-4d49-8f95-104b2713c986",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"eleitor",
+								"0a11da60-a21e-4d49-8f95-104b2713c986"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveEleitor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/eleitor/{{id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"eleitor",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

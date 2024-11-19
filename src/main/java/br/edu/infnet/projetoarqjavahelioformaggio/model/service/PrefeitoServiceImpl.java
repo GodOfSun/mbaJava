@@ -16,11 +16,8 @@ public class PrefeitoServiceImpl extends CandidatoAbstractService<Prefeito> {
     private final PrefeitoRepository prefeitoRepository;
 
     public PrefeitoServiceImpl(PrefeitoRepository prefeitoRepository) {
+        super(prefeitoRepository);
         this.prefeitoRepository = prefeitoRepository;
     }
 
-    @Override
-    public PrefeitoRepository getRepository() {
-        return prefeitoRepository;
-    }
 }

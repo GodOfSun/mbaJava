@@ -16,11 +16,8 @@ public class GovernadorServiceImpl extends CandidatoAbstractService<Governador> 
     private final GovernadorRepository governadorRepository;
 
     public GovernadorServiceImpl(GovernadorRepository governadorRepository) {
+        super(governadorRepository);
         this.governadorRepository = governadorRepository;
     }
 
-    @Override
-    public GovernadorRepository getRepository() {
-        return governadorRepository;
-    }
 }
